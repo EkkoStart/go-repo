@@ -2,9 +2,9 @@ package idutil
 
 import (
 	"crypto/rand"
-	"wutils/iputil"
-	"wutils/stringutil"
 
+	"github.com/EkkoStart/go-repo/wutils/iputil"
+	"github.com/EkkoStart/go-repo/wutils/stringutil"
 	"github.com/sony/sonyflake"
 	hashids "github.com/speps/go-hashids"
 )

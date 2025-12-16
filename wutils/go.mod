@@ -1,4 +1,4 @@
-module wutils
+module github.com/EkkoStart/go-repo/wutils
 
 go 1.23.5
 

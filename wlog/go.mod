@@ -1,4 +1,4 @@
-module wlog
+module github.com/EkkoStart/go-repo/wlog
 
 go 1.23.5
 
