@@ -3,6 +3,7 @@ package idutil
 import (
 	"crypto/rand"
 	"wutils/iputil"
+	"wutils/stringutil"
 
 	"github.com/sony/sonyflake"
 	hashids "github.com/speps/go-hashids"
