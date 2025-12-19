@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	unknownCode defaultCoder = defaultCoder{
+	unknownCoder defaultCoder = defaultCoder{
 		1,
 		http.StatusInternalServerError,
 		"An internal server error occurred",
@@ -83,7 +83,7 @@ func ParseCoder(err error) Coder {
 			return coder
 		}
 	}
-	return unknownCode
+	return unknownCoder
 }
 
 func IsCode(err error, code int) bool {
@@ -100,5 +100,5 @@ func IsCode(err error, code int) bool {
 }
 
 func init() {
-	codes[unknownCode.Code()] = unknownCode
+	codes[unknownCoder.Code()] = unknownCoder
 }
