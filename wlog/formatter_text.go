@@ -7,11 +7,16 @@ import (
 
 type TextFormatter struct {
 	IgnoreBasicFields bool
+	DisableColors     bool
 }
 
 func (f *TextFormatter) Format(e *Entry) error {
 	if !f.IgnoreBasicFields {
-		e.Buffer.WriteString(fmt.Sprintf("%s %s", e.Time.Format(time.RFC3339), LevelNameMapping[e.Level]))
+		if !f.DisableColors {
+			e.Buffer.WriteString(fmt.Sprintf("%s %s%s%s ", e.Time.Format(time.RFC3339), ColorMapping[e.Level], LevelNameMapping[e.Level], Reset))
+		} else {
+			e.Buffer.WriteString(fmt.Sprintf("%s %s ", e.Time.Format(time.RFC3339), LevelNameMapping[e.Level]))
+		}
 		if e.File != "" {
 			short := e.File
 			for i := len(e.File) - 1; i > 0; i-- {
@@ -20,7 +25,7 @@ func (f *TextFormatter) Format(e *Entry) error {
 					break
 				}
 			}
-			e.Buffer.WriteString(fmt.Sprintf("%s:%d", short, e.Line))
+			e.Buffer.WriteString(fmt.Sprintf(" %s:%d ", short, e.Line))
 		}
 		e.Buffer.WriteString(" ")
 	}

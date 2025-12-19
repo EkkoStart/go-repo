@@ -57,7 +57,7 @@ func (l *logger) entry() *Entry {
 	return l.entryPool.Get().(*Entry)
 }
 
-func (l *logger) Debug(args ...interface{}) {
+func (l *logger) Debug(args ...interface{}) { 
 	l.entry().write(DebugLevel, FmtEmptySeparate, args...)
 }
 
